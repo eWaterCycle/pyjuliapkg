@@ -54,6 +54,7 @@ def reset_state():
     # TODO: Can we more direcly figure out the environment from which python was called? Maybe find the first PATH entry containing python?
     project, project_key = get_config('project')
     if project:
+        project = os.path.expanduser(project)
         if not os.path.isabs(project):
             raise Exception(f'{project_key} must be an absolute path')
         STATE['project'] = project
